@@ -12,14 +12,12 @@ interface Props {
 }
 
 function Search({results}: Props) {
-  return <div>hello</div>
   const router = useRouter()
   const {location, startDate, endDate, guests} = router.query
   const formattedStartDate = format(new Date(startDate as string), 'dd MMMM yyyy')
   const formattedEndDate = format(new Date(endDate as string), 'dd MMMM yyyy')
   const range = `${formattedStartDate} - ${formattedEndDate}`
 
-  
   return <div className="">             
     <Header placeholder={`${location} | ${range} | ${guests} guests`} />
 
@@ -54,8 +52,7 @@ function Search({results}: Props) {
 }
 
 export async function getServerSideProps() {
-  // const searchResults = await fetch(`https://${process.env.VERCEL_URL}/api/search`).then((result) => result.json())
-  const searchResults = null
+  const searchResults = await fetch(`${process.env.BASE_URL}/api/search`).then((result) => result.json())
 
   return {
     props: {
