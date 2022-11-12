@@ -66,10 +66,10 @@ function Home({exploreData, cardsData}: InferGetStaticPropsType<typeof getStatic
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const exploreData: Explore[] = await fetch(`${process.env.VERCEL_URL}/api/explore`)
+  const exploreData: Explore[] = await fetch(`https://${process.env.VERCEL_URL}/api/explore`)
     .then(res => res.json())
 
-  const cardsData: Cards[] = await fetch(`${process.env.VERCEL_URL}/api/cards`)
+  const cardsData: Cards[] = await fetch(`https://${process.env.VERCEL_URL}/api/cards`)
     .then(res => res.json())
 
   return {

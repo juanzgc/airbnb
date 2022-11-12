@@ -52,7 +52,7 @@ function Search({results}: Props) {
 }
 
 export async function getServerSideProps() {
-  const searchResults = await fetch(`${process.env.VERCEL_URL}/api/search`).then((result) => result.json())
+  const searchResults = await fetch(`https://${process.env.VERCEL_URL}/api/search`).then((result) => result.json())
 
   return {
     props: {
